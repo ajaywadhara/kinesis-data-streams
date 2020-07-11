@@ -10,6 +10,7 @@ public class AwsKinesisClient {
     public static final String AWS_SECRET_KEY = "aws.secretKey";
 
     static {
+        //add your AWS account access key and secret key
         System.setProperty(AWS_ACCESS_KEY, "AKIAV7ILO752Q6IDYKUG");
         System.setProperty(AWS_SECRET_KEY, "oqtxy7VtJGYIlgIe4nQ+Q37Dk88K+Y3/uvUTcDmu");
     }
