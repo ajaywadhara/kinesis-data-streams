@@ -42,7 +42,7 @@ public class App
 
         //3. putRecord or putRecords - 500 records with single API call
         PutRecordsResult results = kinesisClient.putRecords(recordsRequest);
-        if(results.getFailedRecordCount() > 1){
+        if(results.getFailedRecordCount() > 0){
             System.out.println("Error occurred for records " + results.getFailedRecordCount());
         } else {
             System.out.println("Data sent successfully...");
