@@ -29,7 +29,7 @@ public class App
         AmazonKinesis kinesisClient = AwsKinesisClient.getKinesisClient();
         while(true){
             app.sendData(kinesisClient);
-            Thread.sleep(5000);
+            Thread.sleep(20000);
         }
 
     }
@@ -37,7 +37,7 @@ public class App
     private void sendData(AmazonKinesis kinesisClient){
         //2. PutRecordRequest
         PutRecordsRequest recordsRequest = new PutRecordsRequest();
-        recordsRequest.setStreamName("order-stream");
+        recordsRequest.setStreamName("OrderStream");
         recordsRequest.setRecords(getRecordsRequestList());
 
         //3. putRecord or putRecords - 500 records with single API call
@@ -64,9 +64,9 @@ public class App
 
     private List<Order> getOrderList(){
         List<Order> orders = new ArrayList<>();
-        for(int i=0;i<500;i++){
+        for(int i=1;i<=500;i++){
             Order order = new Order();
-            order.setOrderId(random.nextInt());
+            order.setOrderId(Math.abs(random.nextInt()));
             order.setProduct(productList.get(random.nextInt(productList.size())));
             order.setQuantity(random.nextInt(20));
             orders.add(order);
